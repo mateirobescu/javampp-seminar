@@ -21,8 +21,8 @@ public class ProgMainCertificate {
         boolean b = c1.equals(c3);
         System.out.println(b);
         String s = "ofsf";
-        boolean b1 = c1.equals(s);
-        System.out.println(b1);
+//        boolean b1 = c1.equals(s);
+//        System.out.println(b1);
 
     }
 }
