@@ -9,7 +9,7 @@ public class ObjectSave {
         ObjectsGraph og = null;
 
         try {
-            ObjectOutputStream sout = new ObjectOutputStream(new FileOutputStream("test4.tzt"));
+            ObjectOutputStream sout = new ObjectOutputStream(new FileOutputStream("test4.txt"));
             URL o1 = new URL("http://www.google.com");
             URL o2 = o1;
             URL o3 = o1;
