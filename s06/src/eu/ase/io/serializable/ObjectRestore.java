@@ -8,19 +8,48 @@ public class ObjectRestore {
 
     public static void main(String[] args) {
         ObjectsGraph og = null;
-        try {
-            ObjectInputStream sin = new ObjectInputStream(new FileInputStream("test4.txt"));
+//        try {
+//            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("test4.txt"));
+//
+//            og = (ObjectsGraph) ois.readObject();
+//            System.out.println("og read = " + og);
+//            URL o3 = (URL)ois.readObject();
+//            System.out.println("o3 = " + o3);
+//
+//            boolean exp = ((og.o1 == o3) && (og.o1 == og.o2));
+//            System.out.println("== " + exp);
+//
+//            ois.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-            og = (ObjectsGraph) sin.readObject();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("test4.txt"));) {
+
+            og = (ObjectsGraph) ois.readObject();
             System.out.println("og read = " + og);
-            URL o3 = (URL)sin.readObject();
+            URL o3 = (URL)ois.readObject();
             System.out.println("o3 = " + o3);
 
             boolean exp = ((og.o1 == o3) && (og.o1 == og.o2));
             System.out.println("== " + exp);
 
-            sin.close();
         } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        try (MyResource r= new MyResource()) {
+            r.doSomething();
+        }
+
+        try {
+            int v = 10 / 0;
+        } catch (Exception e) {
+            System.out.println("catch: " + e.getMessage());
+        } finally {
+            System.out.println("finally");
+        }
+        System.out.println("dupa");
+
     }
 }
