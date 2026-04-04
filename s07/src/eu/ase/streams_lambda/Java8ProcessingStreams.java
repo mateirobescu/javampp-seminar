@@ -1,9 +1,8 @@
 package eu.ase.streams_lambda;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Java8ProcessingStreams {
     public static void main(String[] args) {
@@ -31,6 +30,37 @@ public class Java8ProcessingStreams {
         long countEmptyStrings = strings.stream().filter(predEmptyStr).count();
         System.out.println(countEmptyStrings);
 
+        long count = strings.stream().filter(s -> s.isEmpty()).count();
+        System.out.println(count);
+
+        count = strings.parallelStream().filter(s -> s.isEmpty()).count();
+        System.out.println(count);
+
+        count = strings.stream().filter(s -> s.length() == 3).count();
+        System.out.println(count);
+
+        List<String> filtered = strings.stream().filter(s -> !s.isEmpty()).collect(Collectors.toList());
+        System.out.println("Filtered list: " + filtered);
+
+        String mergedString = strings.stream().filter(s -> !s.isEmpty()).collect(Collectors.joining(", "));
+        System.out.println("Merged string: " + mergedString);
+
+        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        List<Integer> squares = numbers.stream().map(i -> i * i).distinct().toList();
+        System.out.println("Squares: " + squares);
+
+        List<Integer> integers = Arrays.asList(1, 2, 13, 4, 6 , 17, 8, 19);
+        IntSummaryStatistics stats = integers.stream().mapToInt(i -> i).summaryStatistics();
+        System.out.println("Min: " + stats.getMin());
+        System.out.println("Max: " + stats.getMax());
+        System.out.println("Sum: " + stats.getSum());
+        System.out.println("Avg: " + stats.getAverage());
+
+        Random random = new Random();
+//        for(int i = 0; i < 10; i++) {
+//            System.out.println(random.nextInt());
+//        }
+        random.ints().limit(10).sorted().forEach(System.out::println);
     }
 
 }
