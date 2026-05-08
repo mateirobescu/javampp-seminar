@@ -1,0 +1,14 @@
+Interface - a contract that a class signs to implement certain methods
+	It cannot have fields (except for static fields).
+	A class can implement as many interfaces as it wants.
+	Until Java 8 all methods were public and abstract
+	Since Java 8 methods can be "default" meaning that they don't have to be abstract anymore.
+	Private methods were also introduced to act as helper methods for the default ones.
+	These were introduced mainly to allow older interfaces to be extended and updated, maintaining backwards compatibility.
+	You should use an interface when you want to increase modularity by using techniques such as programming to an interface or when you want to enforce that a class implements some certain behavior.
+
+Abstract class - a "base" class that cannot be instantiated, which has the role to act as a starting point for all other subclasses.
+	It can have fields and any kind of methods. It behaves like a normal class.
+	A class can only extend one class, as this rules applies for abstract classes too.
+	You should use an abstract class when you have multiple classes with similar core behavior, and you want to enforce good practices, like DRY to increase readability and maintainability.
+	Abstract classes (like interfaces) give you the option to use the same base class type to store objects of subclasses.
