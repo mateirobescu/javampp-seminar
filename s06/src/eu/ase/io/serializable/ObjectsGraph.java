@@ -1,9 +1,11 @@
 package eu.ase.io.serializable;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.net.URL;
 
 public class ObjectsGraph implements Serializable {
+    @Serial
     private static final long serialVersionUID = -689547391845626872L;
     public URL o1;
     public URL o2;

@@ -45,7 +45,8 @@ public class ObjectRestore {
         try {
             int v = 10 / 0;
         } catch (Exception e) {
-            System.out.println("catch: " + e.getMessage());
+//            System.out.println("catch: " + e.getMessage());
+            throw new RuntimeException(e);
         } finally {
             System.out.println("finally");
         }

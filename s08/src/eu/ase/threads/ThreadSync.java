@@ -14,7 +14,7 @@ public class ThreadSync extends Thread {
             System.out.println("Thread = " + this.getName() + "; a = " + a + ";b = " + b);
             a++;
             try {
-                sleep(500);
+                sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
